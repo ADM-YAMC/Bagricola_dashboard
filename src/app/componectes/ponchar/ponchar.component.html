@@ -1,0 +1,14 @@
+<div class="content">
+  <div class="containerm">
+    <form autocomplete="off">
+      <img src="assets/bagricola.jpg" class="icon"/>
+        <h3>Banco <span>Agrícola</span></h3><br>
+          <h5>Ingrese su código de empleado.</h5>
+          <input type="text" (input)="obtenerNombreEmp($event)" class="input-field ml-3" placeholder="Código del empleado" name="codigo" [(ngModel)]="codigoEmp">
+          <button type="submit" class="submit mb-3" value="entrar" (click)="entrar()">PONCHAR ENTRAR</button>
+          <button type="submit" class="submit" value="salir" (click)="salir()">PONCHAR SALIR</button>
+          <button type="button" class="mnd mt-3" (click)="irLogin()" value="salir" style="background: transparent; border: none; color: rgb(17, 17, 17);">Soy un Administrador</button>
+    </form>
+  </div>
+</div>
+

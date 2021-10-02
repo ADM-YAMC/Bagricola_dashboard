@@ -1,0 +1,187 @@
+<body>
+  <input type="checkbox" id="check">
+  <!--header area start-->
+  <header>
+    <label for="check">
+      <i class="fas fa-bars" id="sidebar_btn"></i>
+    </label>
+    <div class="left_area">
+      <h3>Fast <span>Hospital</span></h3>
+    </div>
+  </header>
+  <!--header area end-->
+  <!--mobile navigation bar start-->
+  <div class="mobile_nav">
+    <div class="nav_bar">
+      <img src="assets/profile.png" class="mobile_profile_image" alt="">
+      <i class="fa fa-bars nav_btn"></i>
+    </div>
+    <div class="mobile_nav_items">
+      <a style="cursor: pointer;" (click)="irHome()"><i class="fas fa-desktop"></i><span>Inicio</span></a>
+      <a style="cursor: pointer; background: linear-gradient(90deg, rgba(31,78,121,1) 43%, rgba(40,190,138,1) 87%);" (click)="irARegistro()"><i class="fas fa-eye"></i><span>Vista Empleado</span></a>
+    </div>
+  </div>
+  <!--mobile navigation bar end-->
+  <!--sidebar start-->
+  <div class="sidebar">
+    <div class="profile_info">
+      <img src="assets/profile.png" class="profile_image" alt="" />
+      <!--<img src="otro.png" class="profile_image" alt="">-->
+      <h4>{{nombreusuario}}</h4>
+    </div>
+    <a style="cursor: pointer;" (click)="irHome()"><i class="fas fa-desktop"></i><span>Inicio</span></a>
+    <a style="cursor: pointer; background: linear-gradient(90deg, rgba(31,78,121,1) 43%, rgba(40,190,138,1) 87%);" (click)="irARegistro()"><i class="fas fa-eye"></i><span>Vista Empleado</span></a>
+  </div>
+  <!--sidebar end-->
+  <style>
+    #tex {
+      width: 320px;
+    }
+
+    #lbl {
+      display: none;
+
+    }
+
+
+  </style>
+  <div class="content">
+    <div class="card mb-5">
+      <div style="display: inline;">
+        <ng-template style="background:  rgb(11, 37, 85);" #tipContent6>Editar el Empleado</ng-template>
+        <label style="width: 40px; " (click)="irEditar()"  id="d"  [ngbTooltip]="tipContent6" class="btn btn-success mt-2 mr-2 ml-2" for=""><i class="fas fa-edit"></i></label>
+
+      </div>
+      <div id="cajas" class="A">
+    <img   class="imgg mt-4 ml-2 mr-2" src="{{CapturaImagen}}"   alt="">
+        <div style="background: rgba(40,190,138,1); width: 18%; display: block; height:250px;" class="D">
+          <label class="mt-4 ml-3" for=""><b>Cédula</b></label>
+          <label style="display: block; margin-left: 17px;" for="">{{Cedula}}</label>
+          <label class="ml-3" for=""><b>Nombre</b></label>
+          <label style="display: block; margin-left: 17px; width: 200%;" for="">{{Nombre}}</label>
+          <label class="ml-3"  style="width: 200%;" for=""><b>Codigo</b></label><br>
+          <label class="ml-3" for="">{{codigo}}</label>
+        </div>
+        <div id="cajas" style="background:   rgba(40,190,138,1); display: block; width: 33.33%; height:250px;" class="C">
+          <label style="display: block; width: 200%;" class="mt-4 ml-3" for=""><b>Departamento</b></label>
+          <label  style="display: block;" class="ml-3" for="">{{departamento}}</label>
+          <label style="display: block;" class="ml-3" for=""><b>Fecha de Contracion</b></label>
+          <label style="display: block;" class="ml-3" for="">{{ReorganizarFecha}}</label>
+          <label  style="display: block;" class="ml-3" for=""><b>Grupo</b></label>
+          <label  style="display: block;" class="ml-3 mt-2" for="">A</label>
+        </div>
+        <div style="background:  rgba(40,190,138,1); display: block; width: 33.33%; height:250px;" class="cajas">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card mb-4" style=" background: linear-gradient(90deg, rgba(31,78,121,1) 2%, rgba(40,190,138,1) 52%); border: none;">
+      <div class="{{verde1}}" style="height: 100%;" role="alert">
+       {{msj1}}!
+      </div>
+    </div>
+
+
+    <div class="card mb-5">
+      <h2>Registro de entradas para este empleado</h2>
+      <div class="B" style="width: 100%; height: 100%;">
+      <div id="cajs" style="width: 98%; margin: auto; height: 100%;">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id de Entrada</th>
+              <th>Fecha de Entrada</th>
+              <th>Hora de Entrada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let i of regEntrada; index as a">
+              <td>{{a+1}}</td>
+              <td>{{i.fecha}}</td>
+              <td>{{i.hora}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+      </div>
+    </div>
+    </div>
+
+    <div class="card mb-4" style="background: linear-gradient(90deg, rgba(31,78,121,1) 2%, rgba(40,190,138,1) 52%); border: none;">
+      <div class="{{verde2}}" role="alert">
+       {{msj2}}!
+      </div>
+    </div>
+
+    <div class="card mb-5">
+      <h2>Registro de salida para este empleado</h2>
+      <div class="B" style="width: 100%; height: 100%;">
+      <div id="cajs" style="width: 98%; margin: auto; height: 100%;" class="r">
+        <table datatable [dtOptions]="dtOptions2" [dtTrigger]="dtTrigger2"  class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id de Salida</th>
+              <th>Fecha de Entrada</th>
+              <th>Hora de Entrada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let i of salida; index as a">
+              <td>{{a+1}}</td>
+              <td>{{i.fecha}}</td>
+              <td>{{i.hora}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!--<script type="text/javascript">
+  $(document).ready(function(){
+    $('.nav_btn').click(function(){
+      $('.mobile_nav_items').toggleClass('active');
+    });
+  });
+  </script>-->
+
+
+
+  <!--Fin de la Ventana-->
+  <style>
+    .modal-body .ventana {
+      width: 100%;
+      height: 550px;
+      background: red;
+    }
+    .btn-file {
+  position: relative;
+  overflow: hidden;
+  }
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+
+}
+
+  </style>
+
+
+
+
+
+</body>

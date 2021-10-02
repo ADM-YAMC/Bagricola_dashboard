@@ -1,0 +1,274 @@
+
+  <input type="checkbox" id="check">
+  <!--header area start-->
+  <header>
+    <label for="check">
+      <i class="fas fa-bars" id="sidebar_btn"></i>
+    </label>
+    <div class="left_area">
+      <h3>Banco <span>Agrícola</span></h3>
+    </div>
+    <div class="right_area">
+      <a href="#" class="logout_btn"><i class="fas fa-power-off" id="botonhover"></i></a>
+    </div>
+  </header>
+  <!--header area end-->
+  <!--mobile navigation bar start-->
+  <div class="mobile_nav">
+    <div class="nav_bar">
+      <img src="assets/profile.png" class="mobile_profile_image" alt="">
+      <i (click)="salir=!salir" class="fa fa-bars nav_btn"></i>
+    </div>
+    <div class="mobile_nav_items" *ngIf="salir">
+      <a style="cursor: pointer;" (click)="irHome()"><i class="fas fa-desktop"></i><span>Inicio</span></a>
+      <a style="cursor: pointer;  background: linear-gradient(90deg, rgba(31,78,121,1) 43%, rgba(40,190,138,1) 87%);" (click)="irARegistro()"><i class="fas fa-user-plus"></i><span>Registros</span></a>
+    </div>
+  </div>
+  <!--mobile navigation bar end-->
+  <!--sidebar start-->
+  <div class="sidebar">
+    <div class="profile_info">
+      <img src="assets/profile.png" class="profile_image" alt="" />
+      <!--<img src="otro.png" class="profile_image" alt="">-->
+      <h4>{{nombreusuario}}</h4>
+    </div>
+    <a style="cursor: pointer;" (click)="irHome()"><i class="fas fa-desktop"></i><span>Inicio</span></a>
+    <a style="cursor: pointer;  background: linear-gradient(90deg, rgba(31,78,121,1) 43%, rgba(40,190,138,1) 87%);" (click)="irARegistro()"><i class="fas fa-user-plus"></i><span>Registros</span></a>
+  </div>
+  <!--sidebar end-->
+  <style>
+   @media screen and (max-width: 780px) {
+     table {
+       display: block;
+       overflow-x: auto;
+     }
+    }
+     .content .card h2 {
+    height: 30px;
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 5px;
+    font-size: 25px;
+    font-weight: bold;
+    opacity: 0.8;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .card .caja{
+    width: 100%;
+    height: 400px;
+    display: flex;
+  }
+ .caja .con{
+    width: 33.33%;
+    height: 400px;
+  }
+  #cont1{
+    background: white;
+    display: inline-table;
+  }
+  #cont2{
+    background: rgb(17, 170, 12);
+  }
+  #abc{
+    display: block;
+    width: 91%;
+  }
+  #Arh{
+  width: 91%;
+}
+.row{
+  border: solid 1px rgb(10, 10, 10);
+  border-radius: 10px;
+  width: 65%;
+  margin: auto;
+  background: linear-gradient(90deg, rgba(31,78,121,1) 43%, rgba(40,190,138,1) 87%);
+  color: #fff;
+}
+.col{
+  border-left: 1px solid rgb(7, 7, 7);
+  border-radius: 10px;
+}
+  @media only screen and (max-width: 990px) {
+    .content{
+      height: 100%;
+      margin: 0px;
+      display: block;
+      background-position: center;
+    background-size: cover;
+    transition: 0.5s;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+      }
+  .card .row{
+    display: block;
+  }
+
+      .row .col{
+    width: 100%;
+    height: 100%;
+  }
+  .caja #cont1{
+    width: 100%;
+  }
+.col #txt{
+    width: 100%;
+    justify-content: center;
+  }
+  #abc{
+    display: block;
+    width: 100%;
+  }
+  #Arh{
+  width: 100%;
+}
+  .img{
+  width: 100%;
+  height: 350px;
+  margin: 0px;
+  display: block;
+  }
+#brh{
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 30px;
+  }
+  #btg{
+    margin-bottom: 30px;
+  }
+    }
+  #cont3{
+    background: white;
+  }
+  #txt{
+    width: 318px;
+  }
+
+ #btg{
+    margin-bottom: 30px;
+    margin-top: 20px;
+  }
+  .btn-file {
+  position: relative;
+  overflow: hidden;
+  }
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+.btg{
+  font-weight: bold;
+}
+  </style>
+  <div class="content">
+    <br>
+    <div class="card">
+      <h2> <i style="color:  rgb(28, 80, 177);" class="fas fa-plus"></i>   Registo de Empleados</h2>
+      <div class="container">
+     <div class="row">
+      <div  class="col" ><br>
+       <label  for=""><b> Cedula</b></label><br>
+       <input (input)="autoCompletar($event)"  [(ngModel)]="Cedula" class="form-control" type="number" name="Cedula" placeholder="Escriba la Cedula..." id="txt"><br>
+       <label  for=""><b> Nombre Completo</b></label><br>
+       <input  [(ngModel)]="Nombre" class="form-control" type="text" name="Nombre" placeholder="Nombre Completo del Empleado..." id="txt"><br>
+       <label  for=""><b>Codigo</b></label><br>
+       <input  [(ngModel)]="codigo" class="form-control" type="text" name="apellido" placeholder="Escriba el Codigo del Empleado..." id="txt"><br>
+       <div class="mb-4 " id="txt">
+        <label  for="validationCustom04"><b>Departamento</b></label>
+        <select [(ngModel)]="departamento" (change)="LeerSangre()" class="custom-select" id="validationCustom04" required>
+          <option selected disabled value="">Seleccione el Departamento</option>
+          <option value="Contaduria">Contaduria</option>
+          <option value="Soporte tecnico">Soporte tecnico</option>
+          <option value="Presidencia">Presidencia</option>
+          <option value="Secretaria">Secretaria</option>
+        </select>
+        <div class="invalid-feedback">
+          Please select a valid state.
+        </div>
+      </div>
+      </div>
+      <div class="col" ><br>
+
+        <label class="" for=""><b>Fecha de Contratacion</b></label><br>
+        <form>
+          <div class="form-group">
+            <div id="txt" class="input-group mb-4">
+              <input id="dateOfBirth" [(ngModel)]="FechaNacimeinto"  class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"><i class="fas fa-calendar-alt"></i></button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <label class="" for=""><b>Foto</b></label><br>
+        <button (click)="toggleWebcam();" id="abc" (click)="opening(camara)" class="btn btn-primary mb-3">Tomar una Foto</button>
+        <span id="Arh" class="btn btn-default btn-file btn-primary"> Seleccionar una Foto <input (change)="onChange($event)" type="file"></span>
+          <img  class="img mt-3 mb-3" src="{{CapturaImagen}}"  width="150" height="150" alt="">
+          <button  (click)="limpiar()" *ngIf="eliminar" (click)="opening(camara)" id="brh" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+      </div>
+     </div>
+     <button (click)="Registrar()" id="btg" class="btn btn-success w-100">Registrar</button>
+    </div>
+    </div>
+  </div>
+  <!--<script type="text/javascript">
+  $(document).ready(function(){
+    $('.nav_btn').click(function(){
+      $('.mobile_nav_items').toggleClass('active');
+    });
+  });
+  </script>-->
+
+  <!--MODAL PARA CITAS-->
+  <ng-template #camara let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title"><i class="fas fa-camera"></i>  Camara</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="mostrar"  style="text-align:center">
+
+        <div >
+          <webcam [height]="500" [width]="700" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+                  [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+                  [videoOptions]="videoOptions"
+                  [imageQuality]="1"
+                  (cameraSwitched)="cameraWasSwitched($event)"
+                  (initError)="handleInitError($event)"
+          ></webcam>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align: center;" class="modal-footer">
+    <div  style="width: 100%; height: 50px; text-align: center;" class="ca">
+      <i  id="componet" (click)="d('Cross click')" (click)="triggerSnapshot();" class="fas fa-camera"></i>
+      <i id="componet1" (click)="d('Cross click')" (click)="mostrar=false" class="fas fa-sign-out-alt"></i>
+    </div>
+    </div>
+  </ng-template>
+  <!--MODAL PARA ELIMINAR-->
+
+
+
+
+
+
+
+
+
+
